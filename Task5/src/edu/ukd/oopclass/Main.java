@@ -8,38 +8,27 @@ public class Main {
         Author author2 = new Author("Рей Бредбері", 1920);
         Author author3 = new Author("Франц Кафка", 1883);
 
-
-        Book book1 = new Book("1984", author1, 1949);
-        Book book2 = new Book("Дорога до світанку", author1, 1950, "Піднесення над темрявою деспотизму.");
-        Book book3 = new Book("Відповідальність", author1, 1955, "Погляд на роль особистої відповідальності в суспільстві.");
-        Book book4 = new Book("Останні дні імперії", author1, 1975, "Прогнози про падіння імперій та їхній вплив на людей.");
-        Book book5 = new Book("451° за Фаренгейтом", author2, 1953, "Світ, у якому заборонено книги.");
-        Book book6 = new Book("Америка", author3, 1927, "Роман про життя емігранта, який шукає своє місце в Америці.");
-        Book book7 = new Book("Вибір", author3, 1923, "Про важливість вибору та внутрішні суперечності людини.");
-        Book book8 = new Book("Ніч", author3, 1921, "Про суть людської психології через символи і сновидіння.");
-        Book book9 = new Book("Молитва", author3, 1929, "Ідеї про силу віри і її взаємодію з реальним світом.");
-        Book book10 = new Book("Молитва", author3, 1929, "Ідеї про силу віри і її взаємодію з реальним світом.");
-
-
-        System.out.println("\nІнформація про автора: ");
+        System.out.println("\nІнформація про автора 1: ");
         System.out.println(author1.getInfo());
-        System.out.println("\nІнформація про книгу: ");
-        System.out.println(book3.getInfo());
+        System.out.println("\nІнформація про автора 2: ");
+        System.out.println(author2.getInfo());
+        System.out.println("\nІнформація про автора 3: ");
+        System.out.println(author3.getInfo());
+
 
         Library library1 = new Library("Міська бібліотека");
         System.out.println("\nСтворено бібліотеку: " + library1.getName());
 
-        library1.addBook(book1);
-        library1.addBook(book2);
-        library1.addBook(book3);
-        library1.addBook(book4);
-        library1.addBook(book5);
-        library1.addBook(book6);
-        library1.addBook(book7);
-        library1.addBook(book8);
-        library1.addBook(book9);
-        library1.addBook(book9);
-        library1.addBook(book10);
+        library1.addBook("1984", author1, 1949);
+        library1.addBook("Дорога до світанку", author1, 1950, "Піднесення над темрявою деспотизму.");
+        library1.addBook("Відповідальність", author1, 1955, "Погляд на роль особистої відповідальності в суспільстві.");
+        library1.addBook("Останні дні імперії", author1, 1975, "Прогнози про падіння імперій та їхній вплив на людей.");
+        library1.addBook("451° за Фаренгейтом", author2, 1953, "Світ, у якому заборонено книги.");
+        library1.addBook("Америка", author3, 1927, "Роман про життя емігранта, який шукає своє місце в Америці.");
+        library1.addBook("Вибір", author3, 1923, "Про важливість вибору та внутрішні суперечності людини.");
+        library1.addBook("Ніч", author3, 1921, "Про суть людської психології через символи і сновидіння.");
+        library1.addBook("Молитва", author3, 1929, "Ідеї про силу віри і її взаємодію з реальним світом.");
+        library1.addBook("Молитва", author3, 1929, "Ідеї про силу віри і її взаємодію з реальним світом.");
 
         System.out.println("\nУСІ КНИГИ В БІБЛІОТЕЦІ");
         for (Book book: library1.listBooks()) {
@@ -51,17 +40,6 @@ public class Main {
             System.out.println(book.getInfo() + "\n");
         }
 
-        Reader anatolyi = new Reader("Анатолій");
-        Reader tolik = new Reader("Толік");
-
-        System.out.println("Кількість читачів до Анатолія: " + library1.getNumberOfReaders());
-        library1.registerReader(anatolyi);
-        System.out.println("Кількість читачів після Анатолія: " + library1.getNumberOfReaders());
-
-        library1.borrowBookToReader(book1, tolik);
-        library1.borrowBookToReader(book1, anatolyi);
-        library1.borrowBookToReader(book1, anatolyi);
-
         System.out.println("\nПОШУК КНИГ ЗА РОКОМ");
         ArrayList<Book> booksFound = library1.findBooksByYear(1949);
         if (booksFound.isEmpty()) {
@@ -72,19 +50,29 @@ public class Main {
             }
         }
 
-        System.out.println("Кількість книг до: " + library1.getBookCount());
-        library1.removeBook(book1);
+
+        Reader anatolyi = new Reader("Анатолій");
+        Reader tolik = new Reader("Толік");
+
+        System.out.println("Кількість читачів до Анатолія: " + library1.getNumberOfReaders());
+        library1.registerReader(anatolyi);
+        System.out.println("Кількість читачів після Анатолія: " + library1.getNumberOfReaders());
+
+        library1.borrowBookToReader("Америка", author3, tolik);
+        library1.borrowBookToReader("Америка", author3, anatolyi);
+        library1.borrowBookToReader("Америка", author3, anatolyi);
+        library1.borrowBookToReader("Норвегія", author3, anatolyi);
+
+
+        System.out.println("\nКількість книг до: " + library1.getBookCount());
+        library1.removeBook("Ніч", author3);
         System.out.println("Кількість книг після: " + library1.getBookCount());
+        System.out.println("Автор після видалення книги ⬇\n" + author3.getInfo());
 
-
-        book1 = null;
-        System.out.println("\nКнигу було видалено.");
-        System.out.println("Автор після видалення книги:\n" + author1.getInfo());
-
-
+        // Simulate library deletion
         library1 = null;
-        System.out.println("Бібліотеку було видалено.");
-        System.out.println("Книги після видалення бібліотеки:\n" + author1.getInfo());
+        System.out.println("\nБібліотеку було видалено.");
+        System.out.println("Книги після видалення бібліотеки:\n");
 
         if (library1 != null) {
             library1.listBooks();

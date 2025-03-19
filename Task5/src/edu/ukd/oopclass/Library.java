@@ -18,15 +18,29 @@ public class Library {
         return name;
     }
 
-    public void addBook(Book newBook) {
-        for (Book existingBook: books) {
-            if (existingBook.getTitle().equals(newBook.getTitle())
-            && existingBook.getAuthor().equals(newBook.getAuthor())) {
-                System.out.println("Книга вже є в бібліотеці!");
-                return;
+    public Book findBook(String title, Author author) {
+        for (Book book : books) {
+            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
+                return book;
             }
         }
+        return null;
+    }
+
+    public void addBook(String title, Author author, int year, String annotation) {
+        Book existingBook = findBook(title, author);
+        if (existingBook != null) {
+                System.out.println("Книга вже є в бібліотеці ⬇");
+                System.out.println(existingBook.getInfo());
+                return;
+            }
+        Book newBook = new Book(title, author, year, annotation);  // with annotation
         books.add(newBook);
+        System.out.println("Книга додана до бібліотеки: " + title);
+    }
+
+    public void addBook(String title, Author author, int year) {
+        addBook(title, author, year, ""); // empty annotation
     }
 
     public ArrayList<Book> listBooks() {
@@ -57,16 +71,22 @@ public class Library {
         readers.add(reader);
     }
 
-    public void borrowBookToReader(Book book, Reader reader) {
-        if (!readerIsRegistered(reader)) {
-            System.out.println("Незареєстрований читач не може позичати книги.");
-        } else if (book.isBorrowed()) {
-            System.out.println("Вибачте, наразі книга відсутня.");
+    public void borrowBookToReader(String title, Author author, Reader reader) {
+        Book bookToBorrow = findBook(title, author);
+        if (bookToBorrow != null) {
+            if (!readerIsRegistered(reader)) {
+                System.out.println("Незареєстрований читач не може позичати книги.");
+            } else if (bookToBorrow.isBorrowed()) {
+                System.out.println("Вибачте, наразі книга відсутня.");
+            } else {
+                reader.borrow(bookToBorrow);
+                bookToBorrow.setBorrowed(true);
+                System.out.println("Книгу '" + title + "' позичив " + reader.getName() + ".");
+            }
         } else {
-            reader.borrow(book);
-            book.setBorrowed(true);
-            System.out.println("Книгу '" + book.getTitle() + "' позичив " + reader.getName() + ".");
+            System.out.println("Книгу не знайдено в бібліотеці.");
         }
+
     }
 
     public int getNumberOfReaders() {
@@ -77,16 +97,14 @@ public class Library {
         return readers.contains(reader);
     }
 
-    public void removeBook(Book book) {
-        Iterator<Book> iterator = books.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().equals(book)) {
-                iterator.remove();
-                System.out.println("Книга видалена з бібліотеки.");
-                return;
-            }
+    public void removeBook(String title, Author author) {
+       Book bookToRemove = findBook(title, author);
+        if (bookToRemove != null) {
+            books.remove(bookToRemove);
+            System.out.println("Книга '" + title + "' видалена з бібліотеки.");
+        } else {
+            System.out.println("Книга не знайдена в бібліотеці!");
         }
-        System.out.println("Книга не знайдена в бібліотеці!");
     }
 
     public int getBookCount() {
