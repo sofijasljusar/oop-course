@@ -5,13 +5,12 @@ import java.util.Iterator;
 
 public class Library {
     private String name;
-    private ArrayList<Book> books;
-    private ArrayList<Reader> readers;
+    private ArrayList<Book> books = new ArrayList<>();;
+    private ArrayList<Reader> readers = new ArrayList<>();;
+
 
     public Library(String name) {
         this.name = name;
-        this.books = new ArrayList<Book>();
-        this.readers = new ArrayList<Reader>();
     }
 
     public String getName() {

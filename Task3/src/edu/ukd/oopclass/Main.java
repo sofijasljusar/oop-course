@@ -7,9 +7,11 @@ public class Main {
 
         Car classicCar = new Car();
         Car parameterCar1 = new Car("LAZ", "LAZ-697", 1959, 500_000);
+        Car parameterCar2 = new Car("LAZ", "LAZ-697", 1959, 500_000);
 //        Car car3 = new Car(classicCar);
 
-        System.out.println(classicCar.getInfo());
+        System.out.println(parameterCar1.getInfo());
+        System.out.println(parameterCar2.getInfo());
 
 
 
