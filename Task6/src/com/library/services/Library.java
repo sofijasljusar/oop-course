@@ -4,20 +4,20 @@ import com.library.models.Material;
 import java.util.ArrayList;
 
 public class Library {
-    private String name;
-    private String address;
-    private int yearFound;
-    private ArrayList<Department> departments; // aggregates departments
+    private final String name;
+    private final String address;
+    private final int yearFound;
+    private final ArrayList<Department> departments; // aggregates departments
 
 
-    public Library(String name, String address, int yearFound) {
+    public Library(final String name, final String address, final int yearFound) {
         this.name = name;
         this.address = address;
         this.yearFound = yearFound;
         this.departments = new ArrayList<Department>();
     }
 
-    public void addDepartment(Department department) {
+    public void addDepartment(final Department department) {
         if (departments.contains(department)) {
             System.out.println("\nВідділ '" + department.getName() + "' вже існує!");
         } else {
@@ -26,7 +26,7 @@ public class Library {
         }
     }
 
-    public void removeDepartment(Department department) {
+    public void removeDepartment(final Department department) {
         if (departments.contains(department)) {
             departments.remove(department);
             System.out.println("\nВидалено відділ '" + department.getName() + "'");
@@ -35,7 +35,7 @@ public class Library {
         }
     }
 
-    public void addMaterialToDepartment(Department department, Material material) {
+    public void addMaterialToDepartment(final Department department, final Material material) {
         if (departments.contains(department)) {
             department.addMaterial(material);
         } else {
@@ -44,7 +44,7 @@ public class Library {
 
     }
 
-    public void removeMaterialFromDepartment(Department department, Material material) {
+    public void removeMaterialFromDepartment(final Department department, final Material material) {
         if (departments.contains(department)) {
             department.removeMaterial(material);
         } else {
@@ -62,7 +62,7 @@ public class Library {
                         "\nЗасновано: " + yearFound +
                         "\nВідділи:");
 
-        for (Department department: departments) {
+        for (final Department department: departments) {
             libraryString.append("\n        -").append(department.getName());
         }
 

@@ -1,6 +1,6 @@
 package com.library.models;
 
-public class Employee extends Reader{
+public class Employee extends Reader {
 
     public Employee(String name, String phoneNumber) {
         super(name, phoneNumber);

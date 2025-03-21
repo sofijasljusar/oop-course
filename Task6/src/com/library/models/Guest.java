@@ -1,6 +1,6 @@
 package com.library.models;
 
-public class Guest extends Reader{
+public class Guest extends Reader {
 
     public Guest(String name, String phoneNumber) {
         super(name, phoneNumber);

@@ -1,6 +1,6 @@
 package com.library.models;
 
-public class DVD extends Multimedia{
+public class DVD extends Multimedia {
     private String format;
 
     public DVD(String title, String language, String format) {
