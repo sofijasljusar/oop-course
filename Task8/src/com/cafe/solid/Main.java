@@ -40,6 +40,7 @@ public class Main {
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         DiscountCalculator discountCalculator = new DiscountCalculator();
         discountCalculator.addDiscount(new FridayDiscount());
+        discountCalculator.addDiscount(new ChristmasDiscount());
 
         if (!orderManager.isOrderEmpty()) {
             receiptGenerator.generateReceipt(orderManager.getOrder(), orderManager.calculateTotal());
