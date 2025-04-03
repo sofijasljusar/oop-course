@@ -9,13 +9,13 @@ public class FridayDiscount implements DiscountStrategy{
     @Override
     public double calculateDiscount(double total) {
         LocalDate today = LocalDate.now();
-        boolean isFriday = today.getDayOfWeek() == DayOfWeek.WEDNESDAY;
+        boolean isFriday = today.getDayOfWeek() == DayOfWeek.THURSDAY;
         if (isFriday) {
-            System.out.println("😎Happy Friday! Знижка -50%!!!");
-            System.out.println(total * discountAmount);
+            System.out.printf("😎Happy Friday! Знижка -%d%%!!!\n", (int) (discountAmount*100));
+
             return total * discountAmount;
         }
-        return total;
+        return 0;
     }
 
 }

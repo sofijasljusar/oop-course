@@ -20,18 +20,12 @@ public class DiscountCalculator {
 
     // accumulative discount
     public double calculateDiscount(double total) {
-        ArrayList<Double> subtractedSums = new ArrayList<>();
+        double discountedTotal = total;
         for (DiscountStrategy discount : discounts) {
             double sum = discount.calculateDiscount(total);
-            subtractedSums.add(sum);
+            discountedTotal -= sum;
         }
-        for (double sum : subtractedSums) {
-            System.out.printf("%f - %f\n", total, sum);
-        }
-        for (double sum : subtractedSums) {
-            total -= sum;
-        }
-        return Math.max(total, 0);
+        return Math.max(discountedTotal, 0);
     }
 
 }
