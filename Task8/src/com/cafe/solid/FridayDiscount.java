@@ -11,7 +11,7 @@ public class FridayDiscount implements DiscountStrategy{
         LocalDate today = LocalDate.now();
         boolean isFriday = today.getDayOfWeek() == DayOfWeek.THURSDAY;
         if (isFriday) {
-            System.out.printf("😎Happy Friday! Знижка -%d%%!!!\n", (int) (discountAmount*100));
+            System.out.printf("😎 Happy Friday! Знижка -%d%%!!!\n", (int) (discountAmount*100));
 
             return total * discountAmount;
         }

@@ -11,6 +11,4 @@ public class TotalCalculator {
         }
         return orderTotal;
     }
-
-
 }

@@ -38,7 +38,7 @@ public class Main {
         }
 
         TotalCalculator totalCalculator = new TotalCalculator();
-        ReceiptGenerator receiptGenerator = new ReceiptGenerator();
+        ReceiptGenerator receiptGenerator = new PrintedReceiptGenerator();
         DiscountCalculator discountCalculator = new DiscountCalculator();
         discountCalculator.addDiscount(new FridayDiscount());
         discountCalculator.addDiscount(new ChristmasDiscount());
