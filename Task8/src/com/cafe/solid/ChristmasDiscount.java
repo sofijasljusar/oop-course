@@ -8,7 +8,7 @@ public class ChristmasDiscount implements DiscountStrategy{
     @Override
     public double calculateDiscount(double total) {
         LocalDate today = LocalDate.now();
-        boolean isChristmas = today.getMonthValue() == 4 && today.getDayOfMonth() == 3;
+        boolean isChristmas = today.getMonthValue() == 4 && today.getDayOfMonth() == 4;
         if (isChristmas) {
             System.out.printf("🎄 Merry Christmas! Знижка -%d%%! 🎁\n", (int) (discountAmount*100));
             return total * discountAmount;

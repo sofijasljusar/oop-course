@@ -11,7 +11,7 @@ public class OrderManager implements OrderProcessor {
     }
 
     @Override
-    public void takeOrder(String dish, int quantity, Menu menu) {
+    public void takeOrder(String dish, int quantity, MenuService menu) {
         double price = menu.getItemPrice(dish);
         order.add(new OrderItem(dish, quantity, price));
     }

@@ -37,17 +37,16 @@ public class Main {
             }
         }
 
-        TotalCalculator totalCalculator = new TotalCalculator();
-        ReceiptGenerator receiptGenerator = new PrintedReceiptGenerator();
         DiscountCalculator discountCalculator = new DiscountCalculator();
         discountCalculator.addDiscount(new FridayDiscount());
         discountCalculator.addDiscount(new ChristmasDiscount());
 
+        ReceiptGenerator receiptGenerator = new PdfReceiptGenerator(new TotalCalculator(), discountCalculator);
+
 
         if (!orderManager.isOrderEmpty()) {
-            receiptGenerator.generateReceipt(orderManager.getOrder(), totalCalculator.calculateTotal(orderManager.getOrder()));
-            System.out.println("Загальна сума після знижок: " +
-                    discountCalculator.calculateDiscount(totalCalculator.calculateTotal(orderManager.getOrder())) + " грн");
+            receiptGenerator.generateReceipt(orderManager);
+
         }
 
     }

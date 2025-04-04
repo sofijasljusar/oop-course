@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Menu {
+public class Menu implements MenuService{
     private Map<String, Double> menu;
 
     public Menu() {
@@ -32,6 +32,7 @@ public class Menu {
         return menu.containsKey(itemName);
     }
 
+    @Override
     public double getItemPrice(String itemName) {
         return menu.get(itemName);
     }
