@@ -11,4 +11,9 @@ public class Broker implements Observer{
         System.out.println("test mode print * " + name + ":");
         System.out.println("Нова ціна для акції " + stockName + ": $" + newPrice);
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }
