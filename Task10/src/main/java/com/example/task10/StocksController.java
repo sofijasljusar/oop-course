@@ -51,7 +51,6 @@ public class StocksController implements Initializable {
                     // Switch scene
                     stage = (Stage) stockListView.getScene().getWindow();
                     stage.setScene(new Scene(root));
-                    stage.setTitle("Stock Detail - " + selectedStock);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -62,6 +61,16 @@ public class StocksController implements Initializable {
 
         stockExchange.attach("Google", alice);
         stockExchange.attach("Google", bob);
+    }
+
+    public void setStockExchange(StockExchange stockExchange) {
+        this.stockExchange = stockExchange;
+    }
+    public void refreshStockList() {
+        stockListView.getItems().clear();
+        stockListView.getItems().addAll(stockExchange.getAllStockNames());
+        stockListView.getItems().add("➕ Add Stock");
+
     }
 }
 

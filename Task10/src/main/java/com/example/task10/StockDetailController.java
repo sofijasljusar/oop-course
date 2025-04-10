@@ -68,16 +68,31 @@ public class StockDetailController {
         if (isNew) {
             stockExchange.addStock(name, price);
         } else {
-            Stock stock = stockExchange.getStock(name);
-            stock.setPrice(price);
-            stockExchange.notifyObservers(name);
+            stockExchange.updateStockPrice(name, price);
         }
 
         // go back to main page...
     }
 
+    @FXML
+    public void onDeleteClicked() {
+        if (!isNew) {
+            String name = stockNameField.getText().trim();
+            stockExchange.deleteStock(name);
+        }
+    }
+
+
     public void back(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Stocks.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stocks.fxml"));
+        Parent root = loader.load();
+
+        // Get the existing controller
+        StocksController stocksController = loader.getController();
+        stocksController.setStockExchange(stockExchange); // ✅ inject current stock exchange
+        stocksController.refreshStockList(); // Optional: refresh UI
+
+        // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
