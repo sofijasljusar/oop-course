@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public abstract class Composite implements Employee{
+public abstract class Composite implements Employee {
     private final String name;
     private final String position;
     private List<Employee> employeesList = new ArrayList<>();
@@ -44,7 +44,7 @@ public abstract class Composite implements Employee{
                         "--------------------------------------------------\n" +
                                 position + " " + name + ":");
 
-        for (final Employee employee: employeesList) {
+        for (final Employee employee : employeesList) {
             infoString.append("\n").append(employee.getInfo());
         }
         infoString.append("\n--------------------------------------------------");

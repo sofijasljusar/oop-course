@@ -1,5 +1,8 @@
 package com.company.office;
 
+// Improvements: for simple structure can be simply Composite with abstract methods from employee,
+// and manager would be individual employee
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
