@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Collections;
 
 public class StockExchange implements Subject{
     private Map<String, Stock> stocks = new HashMap<>();
@@ -73,6 +72,21 @@ public class StockExchange implements Subject{
         } else {
             System.out.println("Акцію не знайдено.");
         }
+    }
+
+    //TODO: rename methods
+
+    // Returns a list of stock names for the ListView
+    public List<String> getAllStockNames() {
+        return new ArrayList<>(stocks.keySet());
+    }
+
+    public Stock getStock(String name) {
+        return stocks.get(name);
+    }
+
+    public List<Observer> getSubscribers(String stockName) {
+        return subscribers.get(stockName);
     }
 
 
