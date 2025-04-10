@@ -1,6 +1,8 @@
 package com.example.task10;
 
 //import javafx.collections.FXCollections;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -18,6 +20,8 @@ import java.io.IOException;
 public class StocksController implements Initializable {
     @FXML // fxml injection to add listview
     private ListView<String> stockListView;
+    @FXML
+    private ListView<String> userListView;
 
     private StockExchange stockExchange = new StockExchange(2); // Create a StockExchange instance
     private Stage stage;
@@ -57,7 +61,8 @@ public class StocksController implements Initializable {
             }
         });
         Observer alice = new Investor("Alice");
-        Observer bob = new Investor("Bob");
+        Observer bob = new Broker("Bob");
+
 
         stockExchange.attach("Google", alice);
         stockExchange.attach("Google", bob);
@@ -70,7 +75,27 @@ public class StocksController implements Initializable {
         stockListView.getItems().clear();
         stockListView.getItems().addAll(stockExchange.getAllStockNames());
         stockListView.getItems().add("➕ Add Stock");
+    }
+    @FXML
+    private void toggleUsersPanel() {
+        boolean currentlyVisible = userListView.isVisible();
+        userListView.setVisible(!currentlyVisible);
 
+        if (!currentlyVisible) {
+            // If we're showing it now, populate the list
+            ObservableList<String> subscribers = FXCollections.observableArrayList();
+            for (String stock : stockExchange.getAllStockNames()) {
+                for (Observer o : stockExchange.getSubscribers(stock)) {
+                    if (o != null && !subscribers.contains(o.getName())) {
+                        subscribers.add(o.getName());
+                    }
+                }
+            }
+            userListView.getItems().clear();
+            userListView.getItems().addAll(subscribers);
+            userListView.getItems().add("➕ Add User");
+
+        }
     }
 }
 

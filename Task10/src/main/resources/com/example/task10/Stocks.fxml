@@ -6,33 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="923.0"
-            prefWidth="1120.0"
-            style="-fx-background-color: rgb(153, 153, 255);"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.task10.StocksController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="923.0" prefWidth="1120.0" style="-fx-background-color: rgb(153, 153, 255);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task10.StocksController">
     <children>
 
-<!--        <Button fx:id="usersButton"-->
-<!--                layoutX="1032.0" -->
-<!--                layoutY="30.0"-->
-<!--                mnemonicParsing="false" -->
-<!--                prefHeight="47.0" -->
-<!--                prefWidth="54.0"-->
-<!--                style="-fx-background-color: white;" -->
-<!--                text="Users" -->
-<!--                textAlignment="CENTER" />-->
+        <Button fx:id="usersButton" layoutX="42.0" layoutY="38.0" mnemonicParsing="false" onAction="#toggleUsersPanel" prefHeight="47.0" prefWidth="54.0" style="-fx-background-color: white;" text="Users" textAlignment="CENTER" />
 
-<!--        <ListView fx:id="userListView" -->
-<!--                  layoutX="10" -->
-<!--                  layoutY="10" -->
-<!--                  prefHeight="380.0" -->
-<!--                  prefWidth="280.0" />-->
+        <ListView fx:id="userListView" layoutX="766.0" layoutY="-14.0" prefHeight="949.0" prefWidth="366.0" style="-fx-border-radius: 0px; -fx-padding: 50px 0 0 0;" visible="false" />
 
         <Label layoutX="465.0" layoutY="71.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Stocks :D" textAlignment="CENTER">
             <font>
@@ -40,12 +19,7 @@
             </font>
         </Label>
 
-        <ListView fx:id="stockListView"
-                  layoutX="57.0"
-                  layoutY="195.0"
-                  prefHeight="604.0"
-                  prefWidth="368.0"
-                  style="-fx-background-color: transparent; -fx-padding: 10px; -fx-font-size: 18px; -fx-font-family: &quot;Segoe UI&quot;, sans-serif;" />
+        <ListView fx:id="stockListView" layoutX="57.0" layoutY="195.0" prefHeight="604.0" prefWidth="368.0" style="-fx-background-color: transparent; -fx-padding: 10px; -fx-font-size: 18px; -fx-font-family: &quot;Segoe UI&quot;, sans-serif;" />
 
     </children>
 </AnchorPane>
