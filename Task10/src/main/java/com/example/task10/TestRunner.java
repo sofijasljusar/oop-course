@@ -1,5 +1,8 @@
 package com.example.task10;
 
+import com.example.task10.model.Investor;
+import com.example.task10.model.StockExchange;
+
 public class TestRunner {
     public static void main(String[] args) {
         System.out.println("Testing Logic before UI:");

@@ -1,4 +1,4 @@
-package com.example.task10;
+package com.example.task10.controller;
 
 
 import javafx.event.ActionEvent;

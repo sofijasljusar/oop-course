@@ -1,6 +1,10 @@
-package com.example.task10;
+package com.example.task10.controller;
 
 //import javafx.collections.FXCollections;
+import com.example.task10.model.Broker;
+import com.example.task10.model.Investor;
+import com.example.task10.model.Observer;
+import com.example.task10.model.StockExchange;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

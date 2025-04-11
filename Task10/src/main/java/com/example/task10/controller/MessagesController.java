@@ -1,12 +1,13 @@
-package com.example.task10;
+package com.example.task10.controller;
 
+import com.example.task10.model.Observer;
+import com.example.task10.model.StockExchange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 

@@ -1,4 +1,4 @@
-package com.example.task10;
+package com.example.task10.model;
 
 import java.util.List;
 

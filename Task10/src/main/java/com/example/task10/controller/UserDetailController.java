@@ -1,5 +1,9 @@
-package com.example.task10;
+package com.example.task10.controller;
 
+import com.example.task10.model.Broker;
+import com.example.task10.model.Investor;
+import com.example.task10.model.Observer;
+import com.example.task10.model.StockExchange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package com.example.task10;
+package com.example.task10.model;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
