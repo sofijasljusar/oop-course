@@ -15,7 +15,7 @@
     <children>
         <Button layoutX="34.0" layoutY="30.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="54.0" style="-fx-background-color: white;" text="Back" textAlignment="CENTER" />
 
-        <Label layoutX="401.0" layoutY="71.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="User Details" textAlignment="CENTER">
+        <Label layoutX="465.0" layoutY="71.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="User Details" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="48.0" />
             </font>
@@ -23,8 +23,6 @@
 
         <Label layoutX="82.0" layoutY="200.0" style="-fx-font-size: 20px;" text="Name:" />
         <TextField fx:id="nameField" layoutX="182.0" layoutY="200.0" prefWidth="300.0" />
-
-<!--        <Label fx:id="nameLabel" layoutX="182.0" layoutY="200.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />-->
 
 
         <Label layoutX="82.0" layoutY="250.0" style="-fx-font-size: 20px;" text="Role:" />
