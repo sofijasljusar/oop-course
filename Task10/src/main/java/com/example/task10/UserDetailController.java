@@ -19,6 +19,8 @@ public class UserDetailController implements Initializable {
     private Parent root;
     private Observer currentUser;
 
+    @FXML
+    private Button messagesButton;
 
     @FXML
     private TextField nameField;
@@ -71,7 +73,7 @@ public class UserDetailController implements Initializable {
                     javafx.scene.control.MenuItem detach = new javafx.scene.control.MenuItem("❌ Detach from stock");
                     detach.setOnAction(evt -> detachStock(cell.getItem()));
                     contextMenu.getItems().add(detach);
-                    contextMenu.show(cell, e.getScreenX(), e.getScreenY());
+                    contextMenu.show(cell, e.getScreenX() - 50, e.getScreenY());
                 }
             });
 
@@ -107,11 +109,9 @@ public class UserDetailController implements Initializable {
     // aha, move not working line to a different place XD
     // passing - nope , global - yes! :D
     private void attachStock(String stockName) {
-        System.out.println("attach triggered");
         String userName = nameField.getText().trim();
 
         if (currentUser != null) {
-            System.out.println("not null");
             stockExchange.attach(stockName, currentUser);
             refreshStockList(userName);
         }
@@ -126,7 +126,6 @@ public class UserDetailController implements Initializable {
         }
     }
     private void refreshStockList(String userName) {
-        System.out.println("refresh triggered");
         userStocksList.getItems().clear();
 
         for (String stock : stockExchange.getAllStockNames()) {
@@ -147,6 +146,7 @@ public class UserDetailController implements Initializable {
         this.stockExchange = stockExchange;
         this.currentUser = stockExchange.getUserByName(userName);
 
+        messagesButton.setVisible(true);
         roleComboBox.setVisible(false);
         roleLabel.setVisible(true);
 
@@ -204,7 +204,6 @@ public class UserDetailController implements Initializable {
     public void onConfirmClicked(ActionEvent e) throws IOException {
         int followedStockCount = userStocksList.getItems().size() - 1;
         if (followedStockCount < 1) {
-            System.out.println("not enough!");
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText("Please select at least one stock to follow.");
@@ -225,6 +224,23 @@ public class UserDetailController implements Initializable {
         StocksController stocksController = loader.getController();
         stocksController.setStockExchange(stockExchange); // ✅ inject current stock exchange
         stocksController.refreshStockList(); // Optional: refresh UI
+
+        // Set the scene
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openMessages(ActionEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserMessages.fxml"));
+        Parent root = loader.load();
+
+        // Get the existing controller
+        StocksController stocksController = loader.getController();
+        stocksController.setStockExchange(stockExchange);
+        stocksController.refreshStockList();
 
         // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
