@@ -22,8 +22,11 @@ public class UserDetailController {
     @FXML
     private Label nameLabel;
 
+//    @FXML
+//    private Label roleLabel;
+
     @FXML
-    private Label roleLabel;
+    private ComboBox<String> roleComboBox;
 
 
     private StockExchange stockExchange;
@@ -43,7 +46,8 @@ public class UserDetailController {
                 }
             }
         }
-        roleLabel.setText(role);
+//        roleLabel.setText(role);
+        roleComboBox.getSelectionModel().select(role);
 
     }
 
