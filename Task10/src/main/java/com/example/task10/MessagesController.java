@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class UserMessages {
+public class UserMessagesController {
     private Stage stage;
     private Scene scene;
     private StockExchange stockExchange;

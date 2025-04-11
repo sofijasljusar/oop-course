@@ -1,5 +1,8 @@
 package com.example.task10;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +48,11 @@ public class StockExchange implements Subject{
         if (stocks.containsKey(stockName)) {
             if (subscribers.get(stockName).size() >= maxSubscribers) {
                 System.out.println("Не можна додати підписника, ліміт досягнуто для акції " + stockName);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ліміт досягнуто");
+                alert.setHeaderText("Не можна додати підписника, ліміт досягнуто для акції " + stockName);
+                alert.getButtonTypes().setAll(ButtonType.OK);
+                alert.show();
             } else {
                 subscribers.get(stockName).add(observer);
                 System.out.println("Підписник успішно доданий до акції " + stockName);
