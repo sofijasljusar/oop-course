@@ -6,12 +6,20 @@ import java.util.List;
 import java.util.Map;
 
 public class StockExchange implements Subject{
+    private static StockExchange instance;
     private Map<String, Stock> stocks = new HashMap<>();
     private Map<String, List<Observer>> subscribers = new HashMap<>();
     int maxSubscribers;
 
     public StockExchange(int maxSubscribers) {
         this.maxSubscribers = maxSubscribers;
+    }
+
+    public static StockExchange getInstance() {
+        if (instance == null) {
+            instance = new StockExchange(2);
+        }
+        return instance;
     }
 
     public void addStock(String name, double price) {
