@@ -42,7 +42,7 @@ public class StockDetailController {
         this.stockExchange = stockExchange;
 
 
-        Stock stock = stockExchange.getStock(stockName);
+        Stock stock = stockExchange.getStockByName(stockName);
         List<Observer> subs = stockExchange.getSubscribers(stockName);
 
 //        stockNameLabel.setText("Stock: " + stock.getName());

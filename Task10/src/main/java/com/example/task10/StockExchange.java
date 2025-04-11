@@ -82,14 +82,12 @@ public class StockExchange implements Subject{
         }
     }
 
-    //TODO: rename methods
 
-    // Returns a list of stock names for the ListView
     public List<String> getAllStockNames() {
         return new ArrayList<>(stocks.keySet());
     }
 
-    public Stock getStock(String name) {
+    public Stock getStockByName(String name) {
         return stocks.get(name);
     }
 
