@@ -1,33 +1,50 @@
 package com.example.task10;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class UserMessagesController {
+public class MessagesController {
     private Stage stage;
     private Scene scene;
     private StockExchange stockExchange;
+    private Observer currentUser;
+
+    @FXML
+    private ListView<String> messagesList;
+
+    public void setStockExchange(StockExchange stockExchange) {
+        this.stockExchange = stockExchange;
+    }
+
+    public void setUser(Observer user) {
+        this.currentUser = user;
+
+        messagesList.getItems().setAll(user.getMessages());
+
+    }
 
     public void back(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stocks.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetail.fxml"));
         Parent root = loader.load();
 
-        // Get the existing controller
-        StocksController stocksController = loader.getController();
-        stocksController.setStockExchange(stockExchange); // ✅ inject current stock exchange
-        stocksController.refreshStockList(); // Optional: refresh UI
+        // You might want to preserve which user we're viewing:
+        UserDetailController controller = loader.getController();
+        controller.initData(currentUser.getName(), stockExchange);
 
-        // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -237,16 +237,15 @@ public class UserDetailController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserMessages.fxml"));
         Parent root = loader.load();
 
-        // Get the existing controller
-        StocksController stocksController = loader.getController();
-        stocksController.setStockExchange(stockExchange);
-        stocksController.refreshStockList();
+        MessagesController controller = loader.getController();
+        controller.setStockExchange(stockExchange); // Pass shared data if needed
+        controller.setUser(currentUser);
 
-        // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+
     }
 }
