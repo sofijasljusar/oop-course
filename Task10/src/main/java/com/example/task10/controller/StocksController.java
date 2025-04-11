@@ -1,6 +1,5 @@
 package com.example.task10.controller;
 
-//import javafx.collections.FXCollections;
 import com.example.task10.model.Broker;
 import com.example.task10.model.Investor;
 import com.example.task10.model.Observer;
@@ -22,8 +21,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StocksController implements Initializable {
+
     @FXML // fxml injection to add listview
     private ListView<String> stockListView;
+
     @FXML
     private ListView<String> userListView;
 
@@ -35,6 +36,7 @@ public class StocksController implements Initializable {
 
     @Override // to populate listview
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize some entries for the first time
         if (stockExchange.getAllStockNames().isEmpty()) {
             stockExchange.addStock("Google", 1500);
             stockExchange.addStock("Apple", 200);
@@ -46,7 +48,6 @@ public class StocksController implements Initializable {
             stockExchange.attach("Google", alice);
             stockExchange.attach("Apple", bob);
         }
-
         refreshStockList();
 
         // Redirect to Stock detail page
@@ -106,11 +107,13 @@ public class StocksController implements Initializable {
     public void setStockExchange(StockExchange stockExchange) {
         this.stockExchange = stockExchange;
     }
+
     public void refreshStockList() {
         stockListView.getItems().clear();
         stockListView.getItems().addAll(stockExchange.getAllStockNames());
         stockListView.getItems().add("➕ Add Stock");
     }
+
     @FXML
     private void toggleUsersPanel() {
         boolean currentlyVisible = userListView.isVisible();

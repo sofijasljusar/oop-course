@@ -1,8 +1,5 @@
 package com.example.task10.model;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,6 +82,7 @@ public class StockExchange implements Subject{
         }
     }
 
+    // METHODS NEEDED IN UI
 
     public List<String> getAllStockNames() {
         return new ArrayList<>(stocks.keySet());

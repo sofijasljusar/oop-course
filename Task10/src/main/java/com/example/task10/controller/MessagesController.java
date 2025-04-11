@@ -22,6 +22,8 @@ public class MessagesController {
     @FXML
     private ListView<String> messagesList;
 
+
+
     public void setStockExchange(StockExchange stockExchange) {
         this.stockExchange = stockExchange;
     }
@@ -30,14 +32,12 @@ public class MessagesController {
         this.currentUser = user;
 
         messagesList.getItems().setAll(user.getMessages());
-
     }
 
     public void back(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetail.fxml"));
         Parent root = loader.load();
 
-        // You might want to preserve which user we're viewing:
         UserDetailController controller = loader.getController();
         controller.initData(currentUser.getName(), stockExchange);
 

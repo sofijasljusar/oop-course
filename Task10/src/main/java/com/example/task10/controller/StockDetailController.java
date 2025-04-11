@@ -21,12 +21,6 @@ public class StockDetailController {
     private Scene scene;
     private Parent root;
 
-//    @FXML
-//    private Label stockNameLabel;
-//
-//    @FXML
-//    private Label priceLabel;
-//
     @FXML
     private Label subscribersLabel;
 
@@ -40,16 +34,15 @@ public class StockDetailController {
     private String stockName;
     private boolean isNew = false;
 
+
+
     public void initData(String stockName, StockExchange stockExchange) {
         this.stockName = stockName;
         this.stockExchange = stockExchange;
 
-
         Stock stock = stockExchange.getStockByName(stockName);
         List<Observer> subs = stockExchange.getSubscribers(stockName);
 
-//        stockNameLabel.setText("Stock: " + stock.getName());
-//        priceLabel.setText("Price: $" + stock.getPrice());
         stockNameField.setText(stock.getName());
         stockPriceField.setText(String.valueOf(stock.getPrice()));
         stockNameField.setEditable(false);
@@ -74,7 +67,6 @@ public class StockDetailController {
             stockExchange.updateStockPrice(name, price);
         }
 
-
     }
 
     @FXML
@@ -85,15 +77,14 @@ public class StockDetailController {
         }
     }
 
-
     public void back(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Stocks.fxml"));
         Parent root = loader.load();
 
         // Get the existing controller
         StocksController stocksController = loader.getController();
-        stocksController.setStockExchange(stockExchange); // ✅ inject current stock exchange
-        stocksController.refreshStockList(); // Optional: refresh UI
+        stocksController.setStockExchange(stockExchange); // inject current stock exchange
+        stocksController.refreshStockList();
 
         // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();

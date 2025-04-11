@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Broker implements Observer{
     private final String name;
-    private final List<String> messages = new ArrayList<>();
+    private final List<String> messages = new ArrayList<>(); // store history of messages
 
     public Broker(String name) {
         this.name = name;

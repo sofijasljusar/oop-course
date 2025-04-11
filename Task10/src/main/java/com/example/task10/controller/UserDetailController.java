@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -50,11 +49,12 @@ public class UserDetailController implements Initializable {
     private StockExchange stockExchange;
     private boolean isNew = false;
 
+
+
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         userStocksList.setOnMouseClicked(event -> {
             if (event.getClickCount() == 1) {
-                int index = userStocksList.getSelectionModel().getSelectedIndex();
                 String selected = userStocksList.getSelectionModel().getSelectedItem();
                 if (selected != null && selected.startsWith("➕")) {
                     showAttachStockDialog();
@@ -84,6 +84,7 @@ public class UserDetailController implements Initializable {
             return cell;
         });
     }
+
     private void showAttachStockDialog() {
         javafx.scene.control.ChoiceDialog<String> dialog = new javafx.scene.control.ChoiceDialog<>();
         dialog.setTitle("Add Stock");
@@ -137,6 +138,7 @@ public class UserDetailController implements Initializable {
             refreshStockList(userName);
         }
     }
+
     private void refreshStockList(String userName) {
         userStocksList.getItems().clear();
 
@@ -232,12 +234,10 @@ public class UserDetailController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Stocks.fxml"));
         Parent root = loader.load();
 
-        // Get the existing controller
         StocksController stocksController = loader.getController();
-        stocksController.setStockExchange(stockExchange); // ✅ inject current stock exchange
-        stocksController.refreshStockList(); // Optional: refresh UI
+        stocksController.setStockExchange(stockExchange);
+        stocksController.refreshStockList();
 
-        // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -250,7 +250,7 @@ public class UserDetailController implements Initializable {
         Parent root = loader.load();
 
         MessagesController controller = loader.getController();
-        controller.setStockExchange(stockExchange); // Pass shared data if needed
+        controller.setStockExchange(stockExchange);
         controller.setUser(currentUser);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();

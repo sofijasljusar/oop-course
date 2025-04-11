@@ -4,24 +4,22 @@
     -fx-border-color: #ccc; /* Light gray border */
     -fx-border-radius: 10px; /* Rounded corners */
     -fx-padding: 10px;
-    -fx-font-size: 20px; /* Adjust font size */
+    -fx-font-size: 20px;
     -fx-font-family: "Segoe UI", sans-serif; /* Modern font family */
 }
 
 .list-cell {
-    -fx-background-color: transparent; /* Transparent background for list items */
-    -fx-text-fill: #333; /* Dark text color */
-    -fx-padding: 10px 15px; /* Padding inside list items */
-    -fx-alignment: center-left; /* Align text to the left */
-    -fx-font-size: 20px; /* Font size for the list item */
+    -fx-background-color: transparent;
+    -fx-text-fill: #333;
+    -fx-padding: 10px 15px;
+    -fx-alignment: center-left;
+    -fx-font-size: 20px;
     -fx-pref-height: 26.0;
 }
-
 
 .list-cell:filled:hover {
     -fx-background-color: #f0f0f0; /* Light gray background on hover */
 }
-
 
 .combo-box {
     -fx-background-color: transparent;
