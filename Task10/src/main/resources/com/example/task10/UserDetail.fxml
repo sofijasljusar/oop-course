@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="923.0" prefWidth="1120.0" style="-fx-background-color: rgb(153, 153, 255);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task10.UserDetailController">
+
+    <children>
+        <Button layoutX="34.0" layoutY="30.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="54.0" style="-fx-background-color: white;" text="Back" textAlignment="CENTER" />
+
+        <Label layoutX="401.0" layoutY="71.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Stock Details" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="48.0" />
+            </font>
+        </Label>
+
+        <Label layoutX="82.0" layoutY="200.0" style="-fx-font-size: 20px;" text="Name:" />
+<!--        <TextField fx:id="nameField" layoutX="182.0" layoutY="200.0" prefWidth="300.0" />-->
+
+        <Label fx:id="nameLabel" layoutX="182.0" layoutY="200.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />
+
+
+        <Label layoutX="82.0" layoutY="250.0" style="-fx-font-size: 20px;" text="Role:" />
+<!--        <TextField fx:id="stockPriceField" layoutX="182.0" layoutY="250.0" prefWidth="300.0" />-->
+<!--        <Label fx:id="roleLabel" layoutX="182.0" layoutY="250.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />-->
+        <ComboBox fx:id="roleComboBox" layoutX="182.0" layoutY="250.0" prefWidth="300.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Investor" />
+                    <String fx:value="Broker" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+    </children>
+</AnchorPane>

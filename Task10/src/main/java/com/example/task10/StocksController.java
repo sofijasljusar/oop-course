@@ -23,18 +23,25 @@ public class StocksController implements Initializable {
     @FXML
     private ListView<String> userListView;
 
-    private StockExchange stockExchange = new StockExchange(2); // Create a StockExchange instance
+    private StockExchange stockExchange = StockExchange.getInstance();
     private Stage stage;
 
 
     @Override // to populate listview
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        stockExchange.addStock("Google", 1500);
-        stockExchange.addStock("Apple", 200);
-        stockExchange.addStock("Amazon", 3000);
-        System.out.println(stockExchange.getAllStockNames());
-        stockListView.getItems().addAll(stockExchange.getAllStockNames());
-        stockListView.getItems().add("➕ Add Stock");
+        if (stockExchange.getAllStockNames().isEmpty()) {
+            stockExchange.addStock("Google", 1500);
+            stockExchange.addStock("Apple", 200);
+            stockExchange.addStock("Amazon", 3000);
+
+            Observer alice = new Investor("Alice");
+            Observer bob = new Broker("Bob");
+
+            stockExchange.attach("Google", alice);
+            stockExchange.attach("Apple", bob);
+        }
+
+        refreshStockList();
 
         // Redirect to Stock detail page
         stockListView.setOnMouseClicked(event -> {
@@ -60,12 +67,27 @@ public class StocksController implements Initializable {
                 }
             }
         });
-        Observer alice = new Investor("Alice");
-        Observer bob = new Broker("Bob");
 
+        // Redirect to User detail page
+        userListView.setOnMouseClicked(event -> {
+            String selectedUser = userListView.getSelectionModel().getSelectedItem();
+            if (selectedUser != null) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetail.fxml"));
+                    Parent root = loader.load();
 
-        stockExchange.attach("Google", alice);
-        stockExchange.attach("Google", bob);
+                    // Pass data to the detail controller
+                    UserDetailController controller = loader.getController();
+                    controller.initData(selectedUser, stockExchange);
+
+                    // Switch scene
+                    stage = (Stage) stockListView.getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setStockExchange(StockExchange stockExchange) {
