@@ -25,7 +25,11 @@ public class TestRunner {
         stockMarket.attach("Google", investor1);
         stockMarket.attach("Apple", investor1);
         stockMarket.attach("Apple", investor2);
-        stockMarket.attach("Apple", broker);
+        try {
+            stockMarket.attach("Apple", broker);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
 
         stockMarket.updateStockPrice("Google", 1550.00);
         stockMarket.updateStockPrice("Apple", 1250.00);

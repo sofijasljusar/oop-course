@@ -116,7 +116,15 @@ public class UserDetailController implements Initializable {
         String userName = nameField.getText().trim();
 
         if (currentUser != null) {
-            stockExchange.attach(stockName, currentUser);
+            try {
+                stockExchange.attach(stockName, currentUser);
+            } catch (IllegalStateException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ліміт досягнуто");
+                alert.setHeaderText("Не можна додати підписника, ліміт досягнуто для акції " + stockName);
+                alert.getButtonTypes().setAll(ButtonType.OK);
+                alert.show();
+            }
             refreshStockList(userName);
         }
     }

@@ -47,12 +47,7 @@ public class StockExchange implements Subject{
     public void attach(String stockName, Observer observer) {
         if (stocks.containsKey(stockName)) {
             if (subscribers.get(stockName).size() >= maxSubscribers) {
-                System.out.println("Не можна додати підписника, ліміт досягнуто для акції " + stockName);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Ліміт досягнуто");
-                alert.setHeaderText("Не можна додати підписника, ліміт досягнуто для акції " + stockName);
-                alert.getButtonTypes().setAll(ButtonType.OK);
-                alert.show();
+                throw new IllegalStateException("Не можна додати підписника, ліміт досягнуто для акції " + stockName);
             } else {
                 subscribers.get(stockName).add(observer);
                 System.out.println("Підписник успішно доданий до акції " + stockName);
