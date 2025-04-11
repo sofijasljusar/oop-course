@@ -14,9 +14,24 @@
     -fx-padding: 10px 15px; /* Padding inside list items */
     -fx-alignment: center-left; /* Align text to the left */
     -fx-font-size: 20px; /* Font size for the list item */
+    -fx-pref-height: 26.0;
 }
 
 
 .list-cell:filled:hover {
     -fx-background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+
+.combo-box {
+    -fx-background-color: transparent;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 10px;
+    -fx-padding: 0px;
+    -fx-font-size: 13px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.combo-box .list-cell {
+    -fx-font-size: 13px;
 }

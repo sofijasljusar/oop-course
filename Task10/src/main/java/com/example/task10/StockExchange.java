@@ -97,6 +97,17 @@ public class StockExchange implements Subject{
         return subscribers.get(stockName);
     }
 
+    public Observer getUserByName(String name) {
+        for (String stock : getAllStockNames()) {
+            for (Observer observer : getSubscribers(stock)) {
+                if (observer.getName().equals(name)) {
+                    return observer;
+                }
+            }
+        }
+        return null;
+    }
+
 
 
 }

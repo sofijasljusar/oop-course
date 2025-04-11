@@ -31,7 +31,7 @@
          </font></Label>
 
         <Button layoutX="250.0" layoutY="345.0" onAction="#onSaveClicked" text="💾 Save" />
-      <Button layoutX="347.0" layoutY="345.0" onAction="#onDeleteClicked" style="-fx-background-color: red; -fx-text-fill: white;" text="❌ Delete" />
+        <Button layoutX="347.0" layoutY="345.0" onAction="#onDeleteClicked" style="-fx-background-color: red; -fx-text-fill: white;" text="✖︎ Delete" />
 
 
 

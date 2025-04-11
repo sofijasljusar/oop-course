@@ -71,7 +71,7 @@ public class StockDetailController {
             stockExchange.updateStockPrice(name, price);
         }
 
-        // go back to main page...
+
     }
 
     @FXML
