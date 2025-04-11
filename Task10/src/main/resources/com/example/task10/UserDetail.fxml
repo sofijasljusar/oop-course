@@ -22,15 +22,14 @@
         </Label>
 
         <Label layoutX="82.0" layoutY="200.0" style="-fx-font-size: 20px;" text="Name:" />
-<!--        <TextField fx:id="nameField" layoutX="182.0" layoutY="200.0" prefWidth="300.0" />-->
+        <TextField fx:id="nameField" layoutX="182.0" layoutY="200.0" prefWidth="300.0" />
 
-        <Label fx:id="nameLabel" layoutX="182.0" layoutY="200.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />
+<!--        <Label fx:id="nameLabel" layoutX="182.0" layoutY="200.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />-->
 
 
         <Label layoutX="82.0" layoutY="250.0" style="-fx-font-size: 20px;" text="Role:" />
-<!--        <TextField fx:id="stockPriceField" layoutX="182.0" layoutY="250.0" prefWidth="300.0" />-->
-<!--        <Label fx:id="roleLabel" layoutX="182.0" layoutY="250.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />-->
-        <ComboBox fx:id="roleComboBox" layoutX="182.0" layoutY="250.0" prefWidth="300.0">
+        <Label fx:id="roleLabel" layoutX="182.0" layoutY="250.0" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px;" />
+        <ComboBox fx:id="roleComboBox" layoutX="182.0" layoutY="250.0" prefWidth="300.0" prefHeight="26.0" visible="false">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Investor" />

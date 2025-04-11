@@ -19,23 +19,30 @@ public class UserDetailController {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    private Label nameLabel;
 
-//    @FXML
-//    private Label roleLabel;
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private Label roleLabel;
 
     @FXML
     private ComboBox<String> roleComboBox;
 
 
     private StockExchange stockExchange;
+    private boolean isNew = false;
+
 
 
     public void initData(String userName, StockExchange stockExchange) {
         this.stockExchange = stockExchange;
+        roleComboBox.setVisible(false);
+        roleLabel.setVisible(true);
 
-        nameLabel.setText(userName);
+        nameField.setText(userName);
+        nameField.setEditable(false);
+
 
         String role = "Unknown";
         for (String stock : stockExchange.getAllStockNames()) {
@@ -46,8 +53,19 @@ public class UserDetailController {
                 }
             }
         }
-//        roleLabel.setText(role);
-        roleComboBox.getSelectionModel().select(role);
+        roleLabel.setText(role);
+    }
+
+    public void initForNewUser(StockExchange stockExchange) {
+        this.stockExchange = stockExchange;
+        isNew = true;
+
+        nameField.setEditable(true);
+
+        roleComboBox.setVisible(true);
+        roleLabel.setVisible(false);
+
+
 
     }
 

@@ -78,7 +78,11 @@ public class StocksController implements Initializable {
 
                     // Pass data to the detail controller
                     UserDetailController controller = loader.getController();
-                    controller.initData(selectedUser, stockExchange);
+                    if (selectedUser.equals("➕ Add User")) {
+                        controller.initForNewUser(stockExchange);
+                    } else {
+                        controller.initData(selectedUser, stockExchange);
+                    }
 
                     // Switch scene
                     stage = (Stage) stockListView.getScene().getWindow();
