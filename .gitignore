@@ -2,3 +2,10 @@
 .DS_Store
 out/
 *.iml
+*/docs
+*/index-files
+*/legal
+*/resource-files
+*/script-files
+Task2/edu
+*/.gitignore
