@@ -196,8 +196,9 @@ public class UserDetailController implements Initializable {
     public void onSaveClicked() {
         String name = nameField.getText().trim();
         String role = roleComboBox.getValue();
+        nameField.setEditable(false);
 
-        Observer user;
+
         if (role.equalsIgnoreCase("Investor")) {
             currentUser = new Investor(name);
         } else if (role.equalsIgnoreCase("Broker")) {
