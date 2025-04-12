@@ -14,7 +14,7 @@ public class Investor implements Observer{
         String message = "Нова ціна для акції " + stockName + ": $" + newPrice;
         System.out.println("test mode print * " + name + ":");
         System.out.println(message);
-        messages.add(message);
+        messages.addFirst(message);
     }
 
     @Override
