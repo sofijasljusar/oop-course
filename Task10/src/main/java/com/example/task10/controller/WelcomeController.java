@@ -17,10 +17,10 @@ public class WelcomeController {
     private Parent root;
 
     public void login(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Stocks.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/com/example/task10/Stocks.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/example/task10/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

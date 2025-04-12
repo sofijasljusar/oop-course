@@ -55,7 +55,7 @@ public class StocksController implements Initializable {
             String selectedStock = stockListView.getSelectionModel().getSelectedItem();
             if (selectedStock != null) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("StockDetail.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/task10/StockDetail.fxml"));
                     Parent root = loader.load();
 
                     // Pass data to the detail controller
@@ -80,7 +80,7 @@ public class StocksController implements Initializable {
             String selectedUser = userListView.getSelectionModel().getSelectedItem();
             if (selectedUser != null) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetail.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/task10/UserDetail.fxml"));
                     Parent root = loader.load();
 
                     // Pass data to the detail controller
@@ -94,7 +94,7 @@ public class StocksController implements Initializable {
                     // Switch scene
                     stage = (Stage) stockListView.getScene().getWindow();
                     scene = new Scene(root);
-                    scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+                    scene.getStylesheets().add(getClass().getResource("/com/example/task10/style.css").toExternalForm());
                     stage.setScene(scene);
 
                 } catch (IOException e) {

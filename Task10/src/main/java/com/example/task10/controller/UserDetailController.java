@@ -231,7 +231,7 @@ public class UserDetailController implements Initializable {
     }
 
     public void back(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stocks.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/task10/Stocks.fxml"));
         Parent root = loader.load();
 
         StocksController stocksController = loader.getController();
@@ -240,13 +240,13 @@ public class UserDetailController implements Initializable {
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/example/task10/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
     public void openMessages(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserMessages.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/task10/UserMessages.fxml"));
         Parent root = loader.load();
 
         MessagesController controller = loader.getController();
@@ -255,7 +255,7 @@ public class UserDetailController implements Initializable {
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/example/task10/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 

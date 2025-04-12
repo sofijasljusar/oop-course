@@ -78,7 +78,7 @@ public class StockDetailController {
     }
 
     public void back(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stocks.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/task10/Stocks.fxml"));
         Parent root = loader.load();
 
         // Get the existing controller
@@ -89,7 +89,7 @@ public class StockDetailController {
         // Set the scene
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/example/task10/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
